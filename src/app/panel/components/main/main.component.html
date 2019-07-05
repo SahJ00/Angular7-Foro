@@ -1,0 +1,23 @@
+<div>
+
+  <div class="row">
+    <div class="col-md-3 mt-3">
+      <h3 class="text-center">Panel de usuario</h3>
+      <hr>
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" role="tab"
+          aria-controls="v-pills-home" aria-selected="true" [routerLink]="['listado']"><i class="fa fa-sticky-note"></i> Mis temas</a>
+        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" role="tab"
+          aria-controls="v-pills-profile" aria-selected="false" [routerLink]="['crear']"><i class="fa fa-plus"></i> Crear tema</a>
+        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+          aria-controls="v-pills-settings" aria-selected="false" [routerLink]="['/ajustes']"><i class="fa fa-cog"></i> Ajustes</a>
+      </div>
+    </div>
+    <div class="col-md-1 d-none d-sm-block">
+      <hr class="hr-vertical">
+    </div>
+    <div class="col-md-8 mt-3">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

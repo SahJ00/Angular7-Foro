@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+body,
+html {
+  background-color: #d2dae2 !important;
+  font-family: 'Roboto', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 1rem !important;
+}
+
+.hr-vertical {
+  border: none;
+  border-left: 1px solid hsla(200, 10%, 50%, 100);
+  height: 26rem;
+  width: 1px;
+}
+
+.container {
+  height: 100% !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.avatar_mask {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.avatar_mask img {
+  height: 40px;
+}
+
+.avatar_mask_edit {
+  width: 200px;
+  height: 200px;
+  border-radius: 5%;
+  overflow: hidden;
+  display: block;
+  margin: auto;
+}
+
+.avatar_mask_edit img {
+  height: 200px;
+
+}

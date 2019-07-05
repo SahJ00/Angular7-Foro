@@ -1,0 +1,94 @@
+<div class="col-md-12 mt-3">
+  <h1 class="ml-2">
+    <i class="fa fa-cog"></i>
+    {{page_title}}
+  </h1>
+  <hr>
+  <div class="alert alert-success col-md-12 col-ms-12 mt-3 mx-auto text-center animated zoomIn"
+    *ngIf="status == 'success'">
+    Se guardaron los cambios correctamente.
+  </div>
+  <div class="alert alert-danger col-md-12 col-ms-12 mt-3 mx-auto text-center animated zoomIn"
+    *ngIf="status == 'error'">
+    Ha ocurrido un error, intentelo de nuevo.
+  </div>
+  <!-- EDIT -->
+  <div class="row justify-content-center align-items-center">
+    <form class="col-md-12 col-ms-12 ml-0 pl-0" #userEditForm="ngForm" (ngSubmit)="onSubmit(userEditForm)">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-group">
+            <label for="name">Nombre:</label>
+            <input type="text" name="name" #name="ngModel" [(ngModel)]="user.name" required pattern="[a-zA-ZÀ-ÿ ]+"
+              class="form-control" />
+            <small *ngIf="!name.valid && name.touched" class="invalid-feedback d-block">
+              El nombre no es válido.
+            </small>
+          </div>
+
+          <div class="form-group">
+            <label for="surname">Apellidos:</label>
+            <input type="text" name="surname" #surname="ngModel" [(ngModel)]="user.surname" required
+              pattern="[a-zA-ZÀ-ÿ ]+" class="form-control" />
+            <small *ngIf="!surname.valid && surname.touched" class="invalid-feedback d-block">
+              Los apellidos no son válidos.
+            </small>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" name="email" #email="ngModel" [(ngModel)]="user.email" required
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control" />
+            <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">
+              El email no es válido.
+            </small>
+          </div>
+          <div class="form-group ">
+            <label for="text">Avatar:</label>
+            <angular-file-uploader [config]="afuConfig" [resetUpload]=resetVar (ApiResponse)="avatarUpload($event)">
+            </angular-file-uploader>
+            <div class="avatar_mask_edit mt-4">
+              <img src="{{url + 'avatar/' + identity.image}}" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="form-group">
+            <label for="text">GitHub:</label>
+            <input type="url" name="github" #github="ngModel" [(ngModel)]="user.github" class="form-control"
+              pattern="https?://.+" />
+            <small *ngIf="!github.valid && github.touched" class="invalid-feedback d-block">
+              Esta información tiene que ser una url que comience por https.
+            </small>
+          </div>
+          <div class="form-group">
+            <label for="text">LinkedIn:</label>
+            <input type="url" name="linkedin" #linkedin="ngModel" [(ngModel)]="user.linkedin" class="form-control"
+              pattern="https?://.+" />
+            <small *ngIf="!linkedin.valid && linkedin.touched" class="invalid-feedback d-block">
+              Esta información tiene que ser una url que comience por https.
+            </small>
+          </div>
+          <div class="form-group">
+            <label for="text">Twitter:</label>
+            <input type="url" name="twitter" #twitter="ngModel" [(ngModel)]="user.twitter" class="form-control"
+              pattern="https?://.+" />
+            <small *ngIf="!twitter.valid && twitter.touched" class="invalid-feedback d-block">
+              Esta información tiene que ser una url que comience por https.
+            </small>
+          </div>
+          <div class="form-group">
+            <label for="text">Facebook:</label>
+            <input type="url" name="facebook" #facebook="ngModel" [(ngModel)]="user.facebook" class="form-control"
+              pattern="https?://.+" />
+            <small *ngIf="!facebook.valid && facebook.touched" class="invalid-feedback d-block">
+              Esta información tiene que ser una url que comience por https.
+            </small>
+          </div>
+          <input type="submit" value="Guardar" class="btn btn-success float-right" [disabled]="userEditForm.invalid">
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- FIN EDIT -->
+</div>
