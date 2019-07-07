@@ -1,3 +1,24 @@
-<p>
-  list works!
-</p>
+<div class="col-md-12">
+  <h3 class="text-center">{{page_title}}</h3>
+  <hr>
+
+  <table class="table table-hover">
+    <thead class="thead-default">
+      <tr>
+        <th>Título</th>
+        <th>Fecha</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let topic of topics">
+        <td>{{topic.title}}</td>
+        <td>{{topic.date | amLocale: 'es' | amDateFormat: 'LL'}}</td>
+        <td>
+          <a href="#" title="editar" class="btn btn-sm btn-warning mr-2"><i class="fa fa-edit"></i></a>
+          <a href="#" title="Borrar" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
