@@ -32,6 +32,7 @@ html {
 
 .avatar_mask img {
   height: 40px;
+  width: 40px;
 }
 
 .avatar_mask_edit {
@@ -45,5 +46,16 @@ html {
 
 .avatar_mask_edit img {
   height: 200px;
+}
 
+.avatar_mask_list {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.avatar_mask_list img {
+  height: 60px;
+  width: 60px;
 }

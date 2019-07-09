@@ -7,6 +7,7 @@ import { AddComponent } from './components/add/add.component';
 import { EditComponent } from './components/edit/edit.component';
 import { ListComponent } from './components/list/list.component';
 
+
 const panelRoutes: Routes = [
     {
         path: 'panel', component: MainComponent, children: [
