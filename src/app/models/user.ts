@@ -10,7 +10,8 @@ export class User {
         public github: String,
         public linkedin: String,
         public twitter: String,
-        public facebook: String
+        public facebook: String,
+        public post: Number,
 
     ) { }
 }

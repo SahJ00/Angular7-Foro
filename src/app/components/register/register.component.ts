@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
     private _userService: UserService
   ) {
     this.page_title = 'Registrate';
-    this.user = new User('', '', '', '', '', '', 'ROLE_USER', '', '', '', '');
+    this.user = new User('', '', '', '', '', '', 'ROLE_USER', '', '', '', '', 0);
   }
 
   ngOnInit() {

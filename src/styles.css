@@ -59,3 +59,57 @@ html {
   height: 60px;
   width: 60px;
 }
+
+.avatar_mask_detail {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: auto !important;
+}
+
+.avatar_mask_detail img {
+  height: 150px;
+  width: 150px;
+
+}
+
+.col-profile {
+  text-align: center !important;
+}
+
+.name_detail {
+  margin-top: 1rem;
+}
+
+@media (max-width: 600px) {
+  .title_detail {
+    font-size: 1.1rem;
+  }
+
+  .name_detail {
+    font-size: 1rem;
+    float: left;
+    margin-top: 2rem;
+    margin-left: 1.5rem;
+  }
+
+  .col-profile {
+    text-align: unset !important;
+    display: inline-block;
+  }
+
+  .avatar_mask_detail {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: unset !important;
+    float: left;
+  }
+
+  .avatar_mask_detail img {
+    height: 60px;
+    width: 60px;
+  }
+}

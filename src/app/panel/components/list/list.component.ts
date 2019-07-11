@@ -40,6 +40,7 @@ export class ListComponent implements OnInit {
         if (response.topics) {
           this.status = 'success';
           this.topics = response.topics;
+          console.log(this.topics.length)
         }
       },
       error => {

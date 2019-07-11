@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-3 col-profile">
+    <div class="avatar_mask_detail  mt-3 ">
+      <img src="{{url + 'avatar/' + topic.user.image}}">
+    </div>
+    <h3 class="name_detail">{{topic.user.name + ' ' + topic.user.surname}}</h3>
+  </div>
+  <div class="col-md-1  d-none d-sm-block">
+    <hr class="hr-vertical pl-0 pr-0">
+  </div>
+  <div class="col-md-8">
+    <h1 class="title_detail mt-3">
+      {{topic.title}}
+    </h1>
+    <span class="badge badge-success ml-2" *ngIf="topic.lang != ' '">{{topic.lang}}</span>
+    <span class="badge badge-light ml-2">{{topic.date | amLocale: 'es' | amTimeAgo}}</span>
+    <hr>
+    <p id="topic-content" class="mt-2">{{topic.content}}</p>
+    <p id="topic-code" class="mt-2" *ngIf="topic.code && topic.lang">
+      <div *ngIf="topic.code != ' '"> Code:</div>
+      <ngx-highlight-js lang="{{topic.lang}}" code="{{topic.code}}" *ngIf="topic.code != ' '">
+
+      </ngx-highlight-js>
+
+  </div>
+</div>
