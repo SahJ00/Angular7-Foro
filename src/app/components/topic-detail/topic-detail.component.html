@@ -1,26 +1,79 @@
-<div class="row">
-  <div class="col-md-3 col-profile">
-    <div class="avatar_mask_detail  mt-3 ">
-      <img src="{{url + 'avatar/' + topic.user.image}}">
+<div>
+  <div class="row">
+    <div class="col-md-3 col-profile">
+      <div class="avatar_mask_detail  mt-3 ">
+        <img src="{{url + 'avatar/' + topic.user.image}}">
+      </div>
+      <h3 class="name_detail">{{topic.user.name + ' ' + topic.user.surname}}</h3>
     </div>
-    <h3 class="name_detail">{{topic.user.name + ' ' + topic.user.surname}}</h3>
-  </div>
-  <div class="col-md-1  d-none d-sm-block">
-    <hr class="hr-vertical pl-0 pr-0">
-  </div>
-  <div class="col-md-8">
-    <h1 class="title_detail mt-3">
-      {{topic.title}}
-    </h1>
-    <span class="badge badge-success ml-2" *ngIf="topic.lang != ' '">{{topic.lang}}</span>
-    <span class="badge badge-light ml-2">{{topic.date | amLocale: 'es' | amTimeAgo}}</span>
-    <hr>
-    <p id="topic-content" class="mt-2">{{topic.content}}</p>
-    <p id="topic-code" class="mt-2" *ngIf="topic.code && topic.lang">
-      <div *ngIf="topic.code != ' '"> Code:</div>
-      <ngx-highlight-js lang="{{topic.lang}}" code="{{topic.code}}" *ngIf="topic.code != ' '">
+    <div class="col-md-1  d-none d-sm-block">
+      <hr class="hr-vertical pl-0 pr-0">
+    </div>
+    <div class="col-md-8">
+      <h1 class="title_detail mt-3">
+        {{topic.title}}
+      </h1>
+      <span class="badge badge-success ml-2" *ngIf="topic.lang != ' '">{{topic.lang}}</span>
+      <span class="badge badge-light ml-2">{{topic.date | amLocale: 'es' | amTimeAgo}}</span>
+      <hr>
+      <p id="topic-content" class="mt-2">{{topic.content}}</p>
+      <p id="topic-code" class="mt-2" *ngIf="topic.code && topic.lang">
+        <div *ngIf="topic.code != ' '"> Code:</div>
+        <ngx-highlight-js lang="{{topic.lang}}" code="{{topic.code}}" *ngIf="topic.code != ' '">
 
-      </ngx-highlight-js>
+        </ngx-highlight-js>
 
+    </div>
+
+  </div>
+  <div class="clear-fix"></div>
+  <div class="row justify-content-center">
+    <div id="comment-box" class="mt-3 ml-3 mr-3 col-md-11">
+      <h3>Comentarios</h3>
+      <hr>
+      <div class="alert alert-success  mt-3 mx-auto text-center animated zoomIn" *ngIf="status == 'success'">
+        El comentario se ha añadido correctamente.
+      </div>
+      <div class="alert alert-danger  mt-3 mx-auto text-center animated zoomIn" *ngIf="status == 'error'">
+        El comentario no se ha añadido, intentelo de nuevo.
+      </div>
+      <form #formComment="ngForm" (ngSubmit)="onSubmit(formComment)" *ngIf="identity">
+        <div class="form-group">
+          <label for="content">Pon tu comentario:</label>
+          <textarea name="content" #content="ngModel" [(ngModel)]="comment.content" required
+            class="form-control"></textarea>
+          <small *ngIf="!content.valid && content.touched" class="invalid-feedback d-block">
+            El contenido no es válido.
+          </small>
+        </div>
+        <input type="submit" value="Comentar" class="float-right btn btn-success" [disabled]="formComment.invalid" />
+      </form>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-11">
+      <hr>
+      <ul class="list-group list-comments mb-5">
+        <li class="list-group-item comment-item" *ngFor="let comment of topic.comments">
+          <div class="row justify-content-center">
+            <div class="col-md-12 d-flex align-items-center">
+              <div class="avatar_mask  ">
+                <img src="{{url + 'avatar/' + comment.user.image}}" class="avatar_nav" />
+              </div>
+              <h5 class="ml-3">{{comment.user.name + ' ' + comment.user.surname}}</h5>
+              <span class="badge badge-light ml-2 ml-5 ">{{comment.date | amLocale: 'es' | amTimeAgo}}</span>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-12 mt-1">
+              {{comment.content}}
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <button (click)="deleteComment(comment._id)" class="btn btn-sm btn-danger float-right" *ngIf="identity._id == comment.user._id"><i class="fa fa-trash"></i></button>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
