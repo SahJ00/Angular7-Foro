@@ -8,6 +8,9 @@ import { MomentModule } from 'angular2-moment';
 import { NgxHighlightJsModule } from '@nowzoo/ngx-highlight-js';
 
 import { PanelModule } from './panel/panel.module';
+import { UserService } from './services/user.service';
+import { UserGuard } from './services/user.guard';
+import { NoIdentityGuard } from './services/no.ideniy.guard';
 
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -16,6 +19,7 @@ import { HomeComponent } from './components/home/home.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { TopicsComponent } from './components/topics/topics.component';
 import { TopicDetailComponent } from './components/topic-detail/topic-detail.component';
+import { UsersComponent } from './components/users/users.component';
 
 
 @NgModule({
@@ -26,7 +30,8 @@ import { TopicDetailComponent } from './components/topic-detail/topic-detail.com
     HomeComponent,
     UserEditComponent,
     TopicsComponent,
-    TopicDetailComponent
+    TopicDetailComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +44,10 @@ import { TopicDetailComponent } from './components/topic-detail/topic-detail.com
     NgxHighlightJsModule.forRoot(),
   ],
   providers: [
-    appRoutingProviders
+    appRoutingProviders,
+    UserGuard,
+    UserService,
+    NoIdentityGuard
   ],
   bootstrap: [AppComponent]
 })

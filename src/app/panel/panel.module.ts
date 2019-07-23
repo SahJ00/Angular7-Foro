@@ -13,6 +13,8 @@ import { EditComponent } from './components/edit/edit.component';
 import { ListComponent } from './components/list/list.component';
 
 // Servicios
+import {UserService} from '../services/user.service';
+import {UserGuard} from '../services/user.guard';
 
 // NgModule
 @NgModule({
@@ -36,7 +38,8 @@ import { ListComponent } from './components/list/list.component';
         ListComponent
     ],
     providers: [
-
+        UserService,
+        UserGuard
     ]
 })
 
